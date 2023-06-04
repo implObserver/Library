@@ -13,15 +13,158 @@ html {
     font-size: 2vh;
 }
 
+body {
+    background-color: black;
+}
+
+span {
+    height: min-content;
+    text-align: center;
+}
+
 .wrapper {
     display: grid;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 2fr 6fr;
+    gap: 5vh;
 }
 
 .header {
-    
+    display: grid;
+    gap: 2vh;
+    padding: 1vh;
+}
+
+.title-wrapper {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.title-wrapper>.title {
+    color: #DA6884;
+    font-size: 3rem;
+    height: min-content;
+}
+
+.image-container {
+    display: flex;
+    align-items: end;
+    justify-content: start;
+}
+
+.image-wrapper {
+    height: 18vh;
+    background-size: 100% 100%;
 }
 
 .books {
-    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40vh, 1fr));
+    align-items: center;
+    justify-items: center;
+    padding: 2vh;
+    row-gap: 4vh;
+}
+
+.book-place,
+.book {
+    display: grid;
+    width: 32vh;
+    height: 45vh;
+    border-radius: 0 1.5rem 1.5rem 0;
+}
+
+.book-place {
+    border: 0.5vh #711925 solid;
+    align-items: center;
+    justify-content: center;
+    background-color: #DA6884;
+    opacity: 0.7;
+}
+
+.book-place:hover {
+    opacity: 1;
+}
+
+.plus {
+    height: 50%;
+}
+
+.book {
+    grid-template-columns: 4vh 1fr;
+    background-color: #711925;
+    border: #34050F 0.3vh solid;
+    opacity: 1;
+}
+
+.spine {
+    background-color: #34050F;
+}
+
+.cover {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+.book-header {
+    display: grid;
+    justify-items:right;
+}
+
+.icon-wrapper {
+    width: 6vh;
+    height: 6vh;
+}
+
+.book-middle {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.author,
+.title {
+    display: flex;
+    padding: 1vh;
+    border-bottom: 0.3vh black solid;
+}
+
+.author {
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-family: 'Dinasty Personal Use';
+}
+
+.title {}
+
+.title>span {
+    text-align: left;
+}
+
+.book-footer {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    align-items: center;
+    text-align: right;
+    padding: 2vh;
+}
+
+.pages {
+    height: min-content;
+}
+
+@media screen and (max-aspect-ratio:1/1.0001) {
+    .header {
+        justify-content: center;
+    }
+
+    .title-wrapper {
+        justify-content: center;
+    }
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+    .header {
+        grid-template-columns: 1fr 2fr;
+    }
 }
