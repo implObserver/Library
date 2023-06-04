@@ -108,12 +108,25 @@ span {
 
 .book-header {
     display: grid;
-    justify-items:right;
+    justify-items: right;
 }
 
-.icon-wrapper {
+.trash-wrapper,
+label {
     width: 6vh;
     height: 6vh;
+}
+
+.bookmark-wrapper {
+    display: grid;
+}
+
+.unchecked {
+    background-image: url(./images/book/bookmark-outline.svg);
+}
+
+.checked {
+    background-image: url(./images/book/bookmark-check.svg);
 }
 
 .book-middle {
@@ -126,6 +139,7 @@ span {
     display: flex;
     padding: 1vh;
     border-bottom: 0.3vh black solid;
+
 }
 
 .author {
@@ -135,11 +149,11 @@ span {
     font-family: 'Dinasty Personal Use';
 }
 
-.title {}
-
-.title>span {
-    text-align: left;
+.title {
+    justify-content: center;
 }
+
+.title>span {}
 
 .book-footer {
     display: grid;
@@ -149,8 +163,25 @@ span {
     padding: 2vh;
 }
 
+.trash-wrapper {
+    background-image: url(./images/book/trash.svg);
+    background-size: 100%;
+}
+
 .pages {
     height: min-content;
+}
+
+.pages>input {
+    width: 4.5vh;
+    font-size: 1rem;
+    background-color: #711925;
+    text-align: right;
+    outline: none;
+}
+
+::placeholder {
+    color: black;
 }
 
 @media screen and (max-aspect-ratio:1/1.0001) {
