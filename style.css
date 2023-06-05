@@ -63,7 +63,7 @@ span {
 
 .books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(32vh, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(34vh, 1fr));
     align-items: center;
     justify-items: center;
     padding: 2vh;
