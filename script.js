@@ -1,14 +1,27 @@
 const bookshelf = document.querySelector('.books');
-const inputsReadPages = document.querySelectorAll('.pages-read');
 const bookPlace = document.querySelector('.book-place');
 const popup = document.querySelector('.popup');
 const form = document.querySelector('.create-book');
-const myLibrary = [];
+const aClosePopup = document.querySelector('.close-popup>a');
+const myLibrary = window.localStorage.length > 0 ? JSON.parse(window.localStorage.getItem('library'))
+    : [];
 
 class Book {
-    constructor(author, title, pages, status) {
-        this.numPages = pages;
+    constructor(author, title, pages, status, readPages = 0) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.status = status;
+        this.readPages = readPages;
+    }
+}
 
+class BookNode {
+    constructor(book) {
+        this.authorKey = book.author;
+        this.titleKey = book.title;
+        this.lastReadPages = book.readPages;
+        this.status = book.status;
         this.book = createElement('book');
         this.spine = createElement('spine');
         this.cover = createElement('cover');
@@ -26,18 +39,15 @@ class Book {
         this.readPages.type = 'number';
         this.allPages = document.createElement('span');
         this.allPages.classList.add('all-pages');
-
-        this.readPages.value = 0;
-
-        this.allPages.textContent = `/${pages}`;
-        this.author.textContent = author;
-        this.title.textContent = title;
+        this.readPages.value = book.readPages;
+        console.log(book.readPages);
+        this.allPages.textContent = book.pages;
+        this.author.textContent = book.author;
+        this.title.textContent = book.title;
         this.label.className = 'unchecked';
-        
-        this.lastReadPages = '0';
-        if (status) {
+        if (book.status) {
             this.label.className = 'checked';
-            this.readPages.value = pages;
+            this.readPages.value = book.pages.replace('/', '');
         }
 
         this.addBookStructure();
@@ -56,15 +66,41 @@ class Book {
 
     addBookListeners() {
         this.label.addEventListener('click', e => {
+            let book;
             if (this.label.className === 'unchecked') {
                 this.label.className = 'checked';
+                this.status = true;
                 this.lastReadPages = this.readPages.value;
-                this.readPages.value = this.numPages;
+                this.readPages.value = parseInt(this.allPages.textContent.replace('/', ''));
+                book = new Book(this.author.textContent, this.title.textContent, this.pages.textContent, this.status, this.lastReadPages);
             } else {
+                this.status = false;
                 this.label.className = 'unchecked';
                 this.readPages.value = this.lastReadPages;
+                book = new Book(this.author.textContent, this.title.textContent, this.pages.textContent, this.status, this.lastReadPages);
             }
+            replaceBookToLibrary(book);
         });
+
+        this.readPages.addEventListener('input', e => {
+            let book = new Book(this.author.textContent, this.title.textContent, this.pages.textContent, this.status, this.readPages.value);
+            replaceBookToLibrary(book);
+        })
+
+        this.trashWrapper.addEventListener('click', e => {
+            if (confirm('Вы хотите удалить эту книгу?')) {
+                let book = new Book(this.author.textContent, this.title.textContent, this.pages.textContent, this.status, this.lastReadPages);
+                removeBookToLibrary(book);
+                bookshelf.removeChild(this.book);
+            }
+        })
+    }
+}
+
+if (window.localStorage.length > 0) {
+    for (let JSONbook of myLibrary) {
+        let book = JSON.parse(JSONbook);
+        viewBook(book);
     }
 }
 
@@ -80,12 +116,51 @@ function appendChildrens(element, ...childrens) {
     }
 }
 
-function addBookToLibrary(domBook) {
-    myLibrary.push(domBook);
+function addBookToLibrary(book) {
+    let JSONbook = JSON.stringify(book);
+    let isHave = false;
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        let curBook = JSON.parse(myLibrary[i]);
+        console.log(curBook.author);
+        console.log(book.author);
+        if (curBook.author === book.author
+            || curBook.title === book.title
+            || curBook.pages === book.pages) {
+            alert('Эта книга уже есть в библиотеке');
+            isHave = true;
+        }
+    }
+
+    if (!isHave) {
+        myLibrary.push(JSONbook);
+        localStorage.setItem('library', JSON.stringify(myLibrary));
+        viewBook(book);
+    }
+}
+
+function replaceBookToLibrary(book) {
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        let curBook = JSON.parse(myLibrary[i]);
+        if (curBook.author === book.author) {
+            if (curBook.title === book.title) {
+                myLibrary[i] = JSON.stringify(book);
+            }
+        }
+    }
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+function removeBookToLibrary(book) {
+    let JSONbook = JSON.stringify(book);
+    myLibrary.splice(JSONbook, 1);
+    localStorage.setItem('library', JSON.stringify(myLibrary));
 }
 
 function viewBook(book) {
-    bookshelf.appendChild(book.book);
+    let bookNode = new BookNode(book);
+    bookshelf.appendChild(bookNode.book);
 }
 
 form.addEventListener('click', e => {
@@ -98,17 +173,28 @@ form.addEventListener('submit', e => {
     let title = document.querySelector('.book-title');
     let pages = document.querySelector('.book-pages');
     let status = document.querySelector('.is-read');
-    let book = new Book(author.value, title.value, pages.value, status.checked);
+    let book = new Book(author.value, title.value, `/${pages.value}`, status.checked);
     addBookToLibrary(book);
-    viewBook(book);
 })
 
 bookPlace.addEventListener('click', e => {
-    popup.style.visibility = 'visible';
-    popup.style.opacity = 1;
+    openPopup();
 })
 
 popup.addEventListener('click', e => {
+    closePopup();
+})
+
+aClosePopup.addEventListener('click', e => {
+    closePopup();
+})
+
+function closePopup() {
     popup.style.visibility = 'hidden';
     popup.style.opacity = 0;
-})
+}
+
+function openPopup() {
+    popup.style.visibility = 'visible';
+    popup.style.opacity = 1;
+}

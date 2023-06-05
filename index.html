@@ -37,6 +37,9 @@
 
     <div class="popup">
         <form class="create-book" action="" method="">
+            <div class="close-popup">
+                <a href="#">x</a>
+            </div>
             <h1>Add your book</h1>
             <ul class="fields">
                 <li>
@@ -54,9 +57,9 @@
                     <input type="number" name="book-pages" class="inp book-pages" placeholder="How many pages?"
                         max="9999" required>
                 </li>
-                <li>
-                    <label for="checkbox">Has the book been read?</label>
+                <li class="checkbox">
                     <input type="checkbox" name="is-read" class="is-read">
+                    <label for="checkbox">Has the book been read?</label>
                 </li>
             </ul>
 

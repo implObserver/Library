@@ -155,8 +155,6 @@ label {
     font-size: 1.5rem;
 }
 
-.title>span {}
-
 .book-footer {
     display: grid;
     grid-template-columns: min-content 1fr;
@@ -186,6 +184,16 @@ label {
     color: black;
 }
 
+.pages-read {
+    color: #f7b9da;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .popup {
     position: fixed;
     display: grid;
@@ -199,6 +207,23 @@ label {
     opacity: 0;
     visibility: hidden;
     padding: 1vh;
+    transition: all 0.5s ease 0s;
+}
+
+.close-popup {
+    display: grid;
+    justify-items: center;
+    width: 4vh;
+    height: 4vh;
+    justify-self: right;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    align-items: center;
 }
 
 h1 {
@@ -208,7 +233,7 @@ h1 {
 
 .create-book {
     display: grid;
-    grid-template-rows: 10vh 40vh;
+    grid-template-rows: 8vh 8vh 49vh;
     background-color: #711925;
     width: 40vh;
     height: 80vh;
@@ -225,21 +250,10 @@ h1 {
     width: 30vh;
 }
 
-.fields>li {
+.fields>li:not(.checkbox) {
     display: grid;
     grid-template-rows: repeat(2, min-content);
     gap: 0.5vh;
-}
-
-.add-book {
-    width: 20vh;
-    height: 7vh;
-    border-radius: 1vh;
-    margin: 3vh;
-    background-color: #faebd7;
-    color: #711925;
-    font-size: 1.3rem;
-    justify-self: left;
 }
 
 li>label {
@@ -249,7 +263,7 @@ li>label {
 }
 
 .inp {
-    background-color: #faebd7;
+    background-color: #f5d9b7;
     height: 5vh;
     width: 30vh;
     border-radius: 1vh;
@@ -260,25 +274,45 @@ li>label {
     color: #711925;
 }
 
+.inp:hover {
+    background-color: #faebd7;
+}
+
 .inp::placeholder {
     color: #711925;
     opacity: 0.5;
 }
 
+.checkbox {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 1vh;
+    align-items: center;
+}
+
 .is-read {
     width: 4vh;
     height: 4vh;
+}
+
+.add-book {
+    width: 20vh;
+    height: 7vh;
     border-radius: 1vh;
+    margin: 3vh;
+    background-color: #f5d9b7;
+    color: #711925;
+    font-size: 1.3rem;
+    justify-self: left;
 }
 
-.pages-read {
-    color: #f7b9da;
+.add-book:hover {
+    background-color: #faebd7;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.add-book:active {
+    position: relative;
+    top: +1px;
 }
 
 /* Firefox */
