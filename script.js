@@ -124,9 +124,7 @@ function addBookToLibrary(book) {
         let curBook = JSON.parse(myLibrary[i]);
         console.log(curBook.author);
         console.log(book.author);
-        if (curBook.author === book.author
-            || curBook.title === book.title
-            || curBook.pages === book.pages) {
+        if (curBook.author === book.author && curBook.title === book.title) {
             alert('Эта книга уже есть в библиотеке');
             isHave = true;
         }
