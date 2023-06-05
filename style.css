@@ -95,6 +95,7 @@ span {
     background-color: #711925;
     border: #34050F 0.3vh solid;
     opacity: 1;
+    color: #f7b9da;
 }
 
 .spine {
@@ -151,6 +152,7 @@ label {
 
 .title {
     justify-content: center;
+    font-size: 1.5rem;
 }
 
 .title>span {}
@@ -182,6 +184,106 @@ label {
 
 ::placeholder {
     color: black;
+}
+
+.popup {
+    position: fixed;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    justify-items: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    padding: 1vh;
+}
+
+h1 {
+    color: #ff93ae;
+    font-size: 2.4rem;
+}
+
+.create-book {
+    display: grid;
+    grid-template-rows: 10vh 40vh;
+    background-color: #711925;
+    width: 40vh;
+    height: 80vh;
+    justify-items: center;
+    align-content: center;
+    padding: 2vh;
+    border-radius: 1vh;
+}
+
+.fields {
+    display: grid;
+    grid-template-rows: repeat(4, min-content);
+    align-content: space-around;
+    width: 30vh;
+}
+
+.fields>li {
+    display: grid;
+    grid-template-rows: repeat(2, min-content);
+    gap: 0.5vh;
+}
+
+.add-book {
+    width: 20vh;
+    height: 7vh;
+    border-radius: 1vh;
+    margin: 3vh;
+    background-color: #faebd7;
+    color: #711925;
+    font-size: 1.3rem;
+    justify-self: left;
+}
+
+li>label {
+    width: 25vh;
+    height: min-content;
+    color: #ff93ae;
+}
+
+.inp {
+    background-color: #faebd7;
+    height: 5vh;
+    width: 30vh;
+    border-radius: 1vh;
+    padding-left: 1vh;
+    outline: none;
+    appearance: none;
+    font-size: 1rem;
+    color: #711925;
+}
+
+.inp::placeholder {
+    color: #711925;
+    opacity: 0.5;
+}
+
+.is-read {
+    width: 4vh;
+    height: 4vh;
+    border-radius: 1vh;
+}
+
+.pages-read {
+    color: #f7b9da;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 @media screen and (max-aspect-ratio:1/1.0001) {

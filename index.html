@@ -34,6 +34,35 @@
             </div>
         </div>
     </div>
+
+    <div class="popup">
+        <form class="create-book" action="" method="">
+            <h1>Add your book</h1>
+            <ul class="fields">
+                <li>
+                    <label for="book-title">Book title<span aria-label="required">*</span></label>
+                    <input type="text" name="book-title" class="inp book-title" placeholder="What is the book called?"
+                        maxlength="50" required>
+                </li>
+                <li>
+                    <label for="book-author">Book Author<span aria-label="required">*</span></label>
+                    <input type="text" name="book-author" class="inp book-author" placeholder="Who is the author?"
+                        maxlength="50" required>
+                </li>
+                <li>
+                    <label for="book-pages">Book pages<span aria-label="required">*</span></label>
+                    <input type="number" name="book-pages" class="inp book-pages" placeholder="How many pages?"
+                        max="9999" required>
+                </li>
+                <li>
+                    <label for="checkbox">Has the book been read?</label>
+                    <input type="checkbox" name="is-read" class="is-read">
+                </li>
+            </ul>
+
+            <input class="add-book" type="submit" value="ADD BOOK">
+        </form>
+    </div>
 </body>
 
 </html>
