@@ -173,6 +173,7 @@ form.addEventListener('submit', e => {
     let status = document.querySelector('.is-read');
     let book = new Book(author.value, title.value, `/${pages.value}`, status.checked);
     addBookToLibrary(book);
+    closePopup();
 })
 
 bookPlace.addEventListener('click', e => {
