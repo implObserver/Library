@@ -26,6 +26,7 @@ span {
     display: grid;
     grid-template-rows: 2fr 6fr;
     gap: 5vh;
+    transition: all 0.2s ease 0s;
 }
 
 .header {
@@ -64,6 +65,7 @@ span {
 .books {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(34vh, 1fr));
+    transition: grid-columns all 0.6s ease 0s;
     align-items: center;
     justify-items: center;
     padding: 2vh;
@@ -76,6 +78,7 @@ span {
     width: 32vh;
     height: 45vh;
     border-radius: 0 1.5rem 1.5rem 0;
+    transition: all 0.2s ease 0s;
 }
 
 .book-place {
@@ -84,6 +87,7 @@ span {
     justify-content: center;
     background-color: #DA6884;
     opacity: 0.7;
+    transition: all 0.2s ease 0s;
 }
 
 .book-place:hover {
