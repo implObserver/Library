@@ -6,6 +6,9 @@ const aClosePopup = document.querySelector('.close-popup>a');
 const myLibrary = window.localStorage.length > 0 ? JSON.parse(window.localStorage.getItem('library'))
     : [];
 
+    console.log(myLibrary)
+    console.log(window.localStorage.length)
+    console.log('....')
 class Book {
     constructor(author, title, pages, status, readPages = 0) {
         this.author = author;
