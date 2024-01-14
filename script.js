@@ -5,7 +5,8 @@ const form = document.querySelector('.create-book');
 const aClosePopup = document.querySelector('.close-popup>a');
 const myLibrary = window.localStorage.length > 0 ? JSON.parse(window.localStorage.getItem('library'))
     : [];
-console.log(JSON.parse(window.localStorage.getItem('library')));
+console.log(window.localStorage);
+console.log(window.localStorage.getItem('library'));
 console.log(myLibrary)
 console.log(window.localStorage.length)
 console.log('....')
