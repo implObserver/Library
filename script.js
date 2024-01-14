@@ -3,14 +3,10 @@ const bookPlace = document.querySelector('.book-place');
 const popup = document.querySelector('.popup');
 const form = document.querySelector('.create-book');
 const aClosePopup = document.querySelector('.close-popup>a');
-localStorage.clear()
+
 const myLibrary = window.localStorage.length > 0 ? JSON.parse(window.localStorage.getItem('library'))
     : [];
-console.log(window.localStorage);
-console.log(window.localStorage.getItem('library'));
-console.log(myLibrary)
-console.log(window.localStorage.length)
-console.log('....')
+
 class Book {
     constructor(author, title, pages, status, readPages = 0) {
         this.author = author;
