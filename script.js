@@ -98,6 +98,7 @@ class BookNode {
 }
 
 if (window.localStorage.length > 0) {
+    console.log(myLibrary)
     for (let JSONbook of myLibrary) {
         let book = JSON.parse(JSONbook);
         viewBook(book);
