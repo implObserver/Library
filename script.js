@@ -3,6 +3,7 @@ const bookPlace = document.querySelector('.book-place');
 const popup = document.querySelector('.popup');
 const form = document.querySelector('.create-book');
 const aClosePopup = document.querySelector('.close-popup>a');
+localStorage.clear()
 const myLibrary = window.localStorage.length > 0 ? JSON.parse(window.localStorage.getItem('library'))
     : [];
 console.log(window.localStorage);
